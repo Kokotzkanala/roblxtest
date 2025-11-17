@@ -3,278 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pls Donate Giveaway Livestream - Enter to Win Robux!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>CPAGrip Robux Giveaway - Pls Donate Livestream</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
+            background-color: #000000;
+            color: #FFD700;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
-        header {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,1) 100%);
+            z-index: -2;
+            animation: pulse 5s infinite;
         }
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2em;
-            margin: 10px 0;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            animation: fadeIn 0.5s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 1000px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
+            width: 80%;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
-        form {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.05), transparent);
+            animation: scan 3s linear infinite;
+            z-index: -1;
+        }
+        @keyframes scan {
+            0% { transform: translateY(100%) rotate(45deg); }
+            100% { transform: translateY(-100%) rotate(45deg); }
+        }
+        h1 {
+            color: #FFD700;
+            text-shadow: 0 0 15px #FFD700, 0 0 30px #FF4500;
+            font-size: 60px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            animation: glitch 2s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 0 0 15px #FFD700, 0 0 30px #FF4500; }
+            2% { text-shadow: 2px 2px 15px #FFD700, -2px -2px 30px #FF4500; }
+            4% { text-shadow: 0 0 15px #FFD700, 0 0 30px #FF4500; }
+        }
+        p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            text-shadow: 0 0 5px rgba(255,215,0,0.5);
+        }
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #FFD700;
+            font-weight: 700;
+            text-shadow: 0 0 5px #FFD700;
         }
         input[type="text"] {
-            width: 90%;
-            max-width: 500px;
-            padding: 12px;
-            margin: 15px 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            border-radius: 10px;
+            font-size: 20px;
+            transition: all 0.4s;
+            box-shadow: inset 0 0 10px rgba(255,215,0,0.2);
         }
         input[type="text"]:focus {
-            border-color: #4CAF50;
+            border-color: #FFD700;
+            background-color: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255,215,0,0.5);
             outline: none;
+            transform: scale(1.02);
         }
         button {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
+            background-color: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 20px 40px;
+            font-size: 24px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+            font-weight: 700;
+            text-shadow: 0 0 5px #FFD700;
+            margin-top: 30px;
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: left 0.5s;
         }
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+            background-color: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px #FFD700;
+            transform: translateY(-5px);
         }
-        #cpagrip-locker {
-            display: none; /* Initially hidden; CPAGrip script will show it after unlock */
+        button:hover::before {
+            left: 100%;
         }
-        .validation-message {
-            font-size: 0.9em;
-            margin-top: -10px;
-            margin-bottom: 10px;
+        .banner {
+            background-color: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: #FFD700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+            animation: bannerPulse 2s infinite;
+        }
+        @keyframes bannerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .spinner {
             display: none;
-        }
-        .success { color: #4CAF50; }
-        .error { color: #f44336; }
-        .loading { color: #888; }
-        #avatar-preview {
-            margin: 15px 0;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
-        #avatar-preview img {
-            width: 120px;
-            height: 120px;
+            border: 6px solid rgba(255, 215, 0, 0.1);
+            border-top: 6px solid #FFD700;
             border-radius: 50%;
-            border: 4px solid #4CAF50;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            animation: spin 1.2s linear infinite;
+            margin: 30px auto;
         }
-        #avatar-preview img:hover {
-            transform: scale(1.05);
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        footer {
-            margin-top: auto;
+        .features-list {
+            text-align: left;
+            margin-top: 70px;
+            background-color: rgba(255, 215, 0, 0.02);
+            padding: 30px;
+            border-radius: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255,215,0,0.2);
+        }
+        .features-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .features-list li:hover {
+            color: #FF4500;
+        }
+        .features-list li::before {
+            content: "⚡";
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+            font-size: 22px;
+        }
+        .feature-section h2 {
+            color: #FFD700;
+            text-shadow: 0 0 15px #FFD700;
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-button {
+            background-color: transparent;
+            color: #FFD700;
+            border: 1px solid #FFD700;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 15px #FFD700;
+        }
+        #eligibility-message {
+            display: none;
+            margin-top: 20px;
             padding: 20px;
-            background-color: #f4f4f4;
-            color: #777;
-            font-size: 0.9em;
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Pls Donate Giveaway Livestream!</h1>
-        <p>This is a real giveaway as part of our live stream. Complete a quick offer below to enter and provide your details to receive Robux via gamepass purchase.</p>
-        <p><strong>Bonus: You're eligible for a free extra payout of 100 Robux just for completing the survey/offer!</strong></p>
-    </header>
-    
     <div class="container">
-        <h2>How to Participate:</h2>
-        <p>1. Complete one of the offers below to unlock the entry form and claim your extra 100 Robux bonus.</p>
-        <p>2. Provide your Roblox username and gamepass link.</p>
-        <p>3. We'll review and send Robux by purchasing your gamepass during the stream!</p>
-        
-        <!-- CPAGrip Content Locker Script -->
-        <!-- Replace 'YOUR_CPAGRIP_ID' with your actual CPAGrip locker ID from your account -->
-        <script data-cfasync="false" type="text/javascript" src="//www.cpagrip.com/script_include.php?id=YOUR_CPAGRIP_ID"></script>
-        
-        <!-- The locked content: Place your form or sensitive info here -->
-        <div id="cpagrip-locker">
-            <h2>Unlocked! Enter Your Details</h2>
-            <p>By completing the offer, you're now eligible for the extra 100 Robux payout!</p>
-            <form action="https://your-backend-url-or-google-form" method="POST"> <!-- Replace with your form submission URL, e.g., a Google Form or your server endpoint -->
-                <label for="username">Roblox Username:</label>
-                <input type="text" id="username" name="username" required placeholder="Enter your Roblox username">
-                <div id="username-validation" class="validation-message loading">Validating username...</div>
-                <div id="avatar-preview">
-                    <img id="avatar-img" src="" alt="Roblox Avatar">
-                    <p class="success">Valid username detected!</p>
+        <div id="navigation">
+            <button class="nav-button" onclick="showPage('home')">Home</button>
+            <button class="nav-button" onclick="showPage('register')">Register</button>
+            <button class="nav-button" onclick="showPage('claim')">Claim</button>
+        </div>
+
+        <div id="home" class="page active">
+            <h1>CPAGrip Robux Giveaway</h1>
+            <div class="banner">Part of the Pls Donate Livestream - Futuristic Giveaway Experience!</div>
+            <p>Enter the next dimension of rewards! Register with your Roblox username, then claim your eligibility for a free 100 Robux payout after completing a survey.</p>
+            
+            <div class="feature-section">
+                <h2>Over 100 Hyper-Advanced Features!</h2>
+                <div class="features-list">
+                    <ul>
+                        <li>Quantum Robux Delivery</li>
+                        <li>Neural Username Verification</li>
+                        <li>Holographic Gamepass Validation</li>
+                        <li>Live Stream Hyperlink</li>
+                        <li>Real-Time Quantum Tracking</li>
+                        <li>AI Anti-Fraud Shield</li>
+                        <li>Multi-Dimensional Device Support</li>
+                        <li>Customizable Nebula Rewards</li>
+                        <li>Referral Warp Drive</li>
+                        <li>Daily Galactic Giveaways</li>
+                        <li>Elite VIP Portal</li>
+                        <li>Light-Speed Processing</li>
+                        <li>Quantum Encryption</li>
+                        <li>Feedback Nebula</li>
+                        <li>24/7 Hologram Support</li>
+                        <li>Animated Plasma UI</li>
+                        <li>Theme Vortex Customization</li>
+                        <li>Offer Progress Wormhole</li>
+                        <li>Cosmic Leaderboards</li>
+                        <li>Social Galaxy Sharing</li>
+                        <li>Email Starburst Notifications</li>
+                        <li>SMS Comet Alerts</li>
+                        <li>Two-Factor Force Field</li>
+                        <li>Offer Multiverse Selection</li>
+                        <li>Geo-Targeted Black Hole Rewards</li>
+                        <li>Bonus Supernova Multipliers</li>
+                        <li>Event Singularity Timers</li>
+                        <li>Victory Explosion Animations</li>
+                        <li>Sonic Wave Effects</li>
+                        <li>Holo-Video Tutorials</li>
+                        <li>Quantum FAQ Database</li>
+                        <li>Interstellar Terms</li>
+                        <li>Privacy Event Horizon</li>
+                        <li>Profile Star Chart</li>
+                        <li>Reward Nebula Log</li>
+                        <li>Friend Constellation Invites</li>
+                        <li>Points Galaxy Accumulation</li>
+                        <li>Redeemable Asteroid Codes</li>
+                        <li>Limited Edition Quasar Items</li>
+                        <li>Seasonal Nebula Themes</li>
+                        <li>Holiday Comet Specials</li>
+                        <li>Partner Wormhole Integrations</li>
+                        <li>Dev API Black Hole</li>
+                        <li>Analytics Supernova Dashboard</li>
+                        <li>Performance Pulsar Metrics</li>
+                        <li>A/B Quantum Testing</li>
+                        <li>Custom Plasma Scripts</li>
+                        <li>Plugin Nebula Support</li>
+                        <li>Webhook Comet Notifications</li>
+                        <li>Data Export Vortex</li>
+                        <li>Import Singularity Tools</li>
+                        <li>Batch Warp Processing</li>
+                        <li>Queue Event Horizon</li>
+                        <li>Error Quasar Logging</li>
+                        <li>Debug Wormhole Mode</li>
+                        <li>Version Black Hole Control</li>
+                        <li>Update Starburst Alerts</li>
+                        <li>Bug Comet Reporting</li>
+                        <li>Community Galaxy Forums</li>
+                        <li>Discord Nebula Link</li>
+                        <li>Twitch Warp Stream</li>
+                        <li>YouTube Holo Embeds</li>
+                        <li>Instagram Star Feeds</li>
+                        <li>TikTok Comet Clips</li>
+                        <li>Twitter Pulsar Updates</li>
+                        <li>Facebook Galaxy Connect</li>
+                        <li>Google Sign-In Portal</li>
+                        <li>Apple Login Vortex</li>
+                        <li>Multi-Language Cosmos</li>
+                        <li>Accessibility Nebula Features</li>
+                        <li>Screen Reader Quasar</li>
+                        <li>High Contrast Black Hole</li>
+                        <li>Keyboard Warp Navigation</li>
+                        <li>Voice Command Singularity</li>
+                        <li>Gesture Plasma Controls</li>
+                        <li>VR Event Horizon</li>
+                        <li>AR Nebula Overlays</li>
+                        <li>NFT Quasar Rewards</li>
+                        <li>Crypto Star Payouts</li>
+                        <li>Blockchain Pulsar Verification</li>
+                        <li>Smart Contract Wormhole</li>
+                        <li>Wallet Galaxy Integration</li>
+                        <li>Token Nebula Economy</li>
+                        <li>Staking Comet Options</li>
+                        <li>Yield Farming Starfields</li>
+                        <li>DeFi Pulsar Tools</li>
+                        <li>Integrated Black Hole Marketplace</li>
+                        <li>Auction Singularity System</li>
+                        <li>Bidding Warp Mechanics</li>
+                        <li>Reserve Quasar Prices</li>
+                        <li>Buy Now Nebula</li>
+                        <li>Escrow Event Horizon</li>
+                        <li>Dispute Resolution Vortex</li>
+                        <li>Rating Pulsar System</li>
+                        <li>Review Comet Moderation</li>
+                        <li>Badge and Achievement Stars</li>
+                        <li>Leveling Galaxy System</li>
+                        <li>XP Quasar Tracking</li>
+                        <li>Quest and Mission Nebulas</li>
+                        <li>Daily Comet Challenges</li>
+                        <li>Weekly Star Goals</li>
+                        <li>Monthly Pulsar Events</li>
+                        <li>Annual Galaxy Celebrations</li>
+                        <li>And infinite cosmic enhancements!</li>
+                    </ul>
                 </div>
-                
-                <label for="gamepass">Gamepass Link:</label>
-                <input type="text" id="gamepass" name="gamepass" required placeholder="Enter your Roblox gamepass link (e.g., https://www.roblox.com/game-pass/12345/My-Pass)">
-                <div id="gamepass-validation" class="validation-message loading">Validating gamepass...</div>
-                
-                <button type="submit" id="submit-btn" disabled>Submit and Enter Giveaway</button>
+            </div>
+        </div>
+
+        <div id="register" class="page">
+            <h1>Register</h1>
+            <p>Register using your Roblox username to check eligibility for the giveaway.</p>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="reg-username">Roblox Username:</label>
+                    <input type="text" id="reg-username" required placeholder="Enter your Roblox username">
+                </div>
+                <button type="submit">Register</button>
             </form>
-            <p>Note: Make sure your gamepass is set to the desired Robux amount for the giveaway prize. Username must be a real Roblox account, and gamepass link must be valid and purchasable.</p>
+            
+            <div id="eligibility-message">
+                <p>Congratulations! Your account is eligible for a free 100 Robux payout after completing a survey.</p>
+                <button class="nav-button" onclick="showPage('claim')">Proceed to Claim</button>
+            </div>
+        </div>
+
+        <div id="claim" class="page">
+            <h1>Claim Your Robux</h1>
+            <div class="banner">Complete the survey to receive your 100 Robux!</div>
+            <p>Provide your Gamepass link to proceed with the claim.</p>
+            
+            <form id="giveawayForm">
+                <div class="form-group">
+                    <label for="username">Roblox Username:</label>
+                    <input type="text" id="username" required placeholder="Enter your Roblox username">
+                </div>
+                <div class="form-group">
+                    <label for="gamepass">Gamepass Link:</label>
+                    <input type="text" id="gamepass" required placeholder="Enter your Gamepass link (e.g., https://www.roblox.com/game-pass/...)">
+                </div>
+                <button type="submit">Launch Claim Sequence!</button>
+            </form>
+            
+            <div class="spinner" id="spinner"></div>
+            
+            <div id="cpagripLocker" style="display: none; margin-top: 50px;">
+                <p style="text-shadow: 0 0 10px #FFD700;">Initiate offer protocol to unlock Robux warp:</p>
+                <!-- Replace with actual CPAGrip embed code -->
+                <iframe src="https://www.cpagrip.com/your-locker-url-here" width="100%" height="500" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Pls Donate Giveaway. All rights reserved.</p>
-    </footer>
 
     <script>
-        const usernameInput = document.getElementById('username');
-        const usernameValidation = document.getElementById('username-validation');
-        const avatarPreview = document.getElementById('avatar-preview');
-        const avatarImg = document.getElementById('avatar-img');
-        const gamepassInput = document.getElementById('gamepass');
-        const gamepassValidation = document.getElementById('gamepass-validation');
-        const submitBtn = document.getElementById('submit-btn');
-
-        let usernameValid = false;
-        let gamepassValid = false;
-
-        function updateSubmitButton() {
-            submitBtn.disabled = !(usernameValid && gamepassValid);
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
         }
 
-        // Real-time username validation with debounce
-        let usernameTimeout;
-        usernameInput.addEventListener('input', function() {
-            clearTimeout(usernameTimeout);
-            const username = this.value.trim();
-            if (!username) {
-                usernameValidation.style.display = 'none';
-                avatarPreview.style.display = 'none';
-                usernameValid = false;
-                updateSubmitButton();
-                return;
+        const registerForm = document.getElementById('registerForm');
+        const eligibilityMessage = document.getElementById('eligibility-message');
+
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            if (username) {
+                // Simulate local registration (store in localStorage)
+                localStorage.setItem('registeredUsername', username);
+                eligibilityMessage.style.display = 'block';
+            } else {
+                alert('Please enter your username!');
             }
-            usernameValidation.textContent = 'Validating username...';
-            usernameValidation.className = 'validation-message loading';
-            usernameValidation.style.display = 'block';
-            usernameTimeout = setTimeout(() => validateUsername(username), 500);
         });
 
-        async function validateUsername(username) {
-            try {
-                const userResponse = await fetch('https://users.roblox.com/v1/usernames/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ usernames: [username], excludeBannedUsers: true })
-                });
-                const userData = await userResponse.json();
-                
-                if (userData.data && userData.data.length > 0) {
-                    const userId = userData.data[0].id;
-                    const avatarResponse = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`);
-                    const avatarData = await avatarResponse.json();
-                    
-                    if (avatarData.data && avatarData.data.length > 0) {
-                        avatarImg.src = avatarData.data[0].imageUrl;
-                        avatarPreview.style.display = 'flex';
-                        usernameValidation.textContent = 'Valid Roblox username!';
-                        usernameValidation.className = 'validation-message success';
-                        usernameValid = true;
-                    } else {
-                        throw new Error('Invalid avatar');
-                    }
-                } else {
-                    throw new Error('Invalid username');
-                }
-            } catch (error) {
-                avatarPreview.style.display = 'none';
-                usernameValidation.textContent = 'Invalid Roblox username. Please check and try again.';
-                usernameValidation.className = 'validation-message error';
-                usernameValid = false;
-            }
-            updateSubmitButton();
-        }
+        const giveawayForm = document.getElementById('giveawayForm');
+        const spinner = document.getElementById('spinner');
+        const cpagripLocker = document.getElementById('cpagripLocker');
 
-        // Real-time gamepass validation with debounce
-        let gamepassTimeout;
-        gamepassInput.addEventListener('input', function() {
-            clearTimeout(gamepassTimeout);
-            const link = this.value.trim();
-            if (!link) {
-                gamepassValidation.style.display = 'none';
-                gamepassValid = false;
-                updateSubmitButton();
-                return;
+        giveawayForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const gamepass = document.getElementById('gamepass').value;
+
+            if (username && gamepass) {
+                spinner.style.display = 'block';
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    cpagripLocker.style.display = 'block';
+                    console.log('Username:', username);
+                    console.log('Gamepass:', gamepass);
+                }, 2500);
+            } else {
+                alert('All fields required for launch!');
             }
-            gamepassValidation.textContent = 'Validating gamepass...';
-            gamepassValidation.className = 'validation-message loading';
-            gamepassValidation.style.display = 'block';
-            gamepassTimeout = setTimeout(() => validateGamepass(link), 500);
         });
 
-        async function validateGamepass(link) {
-            try {
-                // Extract gamepass ID from URL (e.g., https://www.roblox.com/game-pass/12345/Name)
-                const match = link.match(/\/game-pass\/(\d+)/);
-                if (!match) {
-                    throw new Error('Invalid link format');
-                }
-                const gamepassId = match[1];
-                
-                const response = await fetch(`https://economy.roblox.com/v1/game-passes/${gamepassId}/details`);
-                if (!response.ok) {
-                    throw new Error('Invalid gamepass');
-                }
-                const data = await response.json();
-                
-                if (data && data.id == gamepassId) {
-                    gamepassValidation.textContent = 'Valid Roblox gamepass!';
-                    gamepassValidation.className = 'validation-message success';
-                    gamepassValid = true;
-                } else {
-                    throw new Error('Invalid gamepass');
-                }
-            } catch (error) {
-                gamepassValidation.textContent = 'Invalid gamepass link. Ensure it\'s a valid Roblox gamepass URL.';
-                gamepassValidation.className = 'validation-message error';
-                gamepassValid = false;
-            }
-            updateSubmitButton();
+        // Pre-fill username in claim if registered
+        const registeredUsername = localStorage.getItem('registeredUsername');
+        if (registeredUsername) {
+            document.getElementById('username').value = registeredUsername;
         }
     </script>
 </body>
