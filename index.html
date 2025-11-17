@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pls Donate Giveaway Livestream - Enter to Win Robux!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #locked-content {
+            display: none; /* Initially hidden; CPAGrip script will show it after unlock */
+        }
+        #avatar-preview {
+            margin-top: 10px;
+            display: none;
+        }
+        #avatar-preview img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+        }
+        #error-message {
+            color: red;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Pls Donate Giveaway Livestream!</h1>
+        <p>This is a real giveaway as part of our live stream. Complete a quick offer below to enter and provide your details to receive Robux via gamepass purchase.</p>
+        <p><strong>Bonus: You're eligible for a free extra payout of 100 Robux just for completing the survey/offer!</strong></p>
+    </header>
+    
+    <div class="container">
+        <h2>How to Participate:</h2>
+        <p>1. Complete one of the offers below to unlock the entry form and claim your extra 100 Robux bonus.</p>
+        <p>2. Provide your Roblox username and gamepass link.</p>
+        <p>3. We'll review and send Robux by purchasing your gamepass during the stream!</p>
+        
+        <!-- CPAGrip Content Locker Script -->
+        <!-- Replace 'YOUR_CPAGRIP_ID' with your actual CPAGrip locker ID from your account -->
+        <script data-cfasync="false" type="text/javascript" src="//www.cpagrip.com/script_include.php?id=YOUR_CPAGRIP_ID"></script>
+        
+        <!-- The locked content: Place your form or sensitive info here -->
+        <div id="cpagrip-locker">
+            <h2>Unlocked! Enter Your Details</h2>
+            <p>By completing the offer, you're now eligible for the extra 100 Robux payout!</p>
+            <form action="https://your-backend-url-or-google-form" method="POST"> <!-- Replace with your form submission URL, e.g., a Google Form or your server endpoint -->
+                <label for="username">Roblox Username:</label><br>
+                <input type="text" id="username" name="username" required placeholder="Enter your Roblox username"><br>
+                <div id="avatar-preview">
+                    <img id="avatar-img" src="" alt="Roblox Avatar">
+                    <p>Valid username detected!</p>
+                </div>
+                <div id="error-message">Invalid Roblox username. Please check and try again.</div>
+                
+                <label for="gamepass">Gamepass Link:</label><br>
+                <input type="text" id="gamepass" name="gamepass" required placeholder="Enter your Roblox gamepass link"><br>
+                
+                <button type="submit">Submit and Enter Giveaway</button>
+            </form>
+            <p>Note: Make sure your gamepass is set to the desired Robux amount for the giveaway prize.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Pls Donate Giveaway. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const usernameInput = document.getElementById('username');
+        const avatarPreview = document.getElementById('avatar-preview');
+        const avatarImg = document.getElementById('avatar-img');
+        const errorMessage = document.getElementById('error-message');
+
+        usernameInput.addEventListener('blur', async function() {
+            const username = this.value.trim();
+            if (!username) return;
+
+            try {
+                // Step 1: Get user ID from username
+                const userResponse = await fetch('https://users.roblox.com/v1/usernames/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        usernames: [username],
+                        excludeBannedUsers: true
+                    })
+                });
+                const userData = await userResponse.json();
+                
+                if (userData.data && userData.data.length > 0) {
+                    const userId = userData.data[0].id;
+                    
+                    // Step 2: Get avatar headshot URL
+                    const avatarResponse = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`);
+                    const avatarData = await avatarResponse.json();
+                    
+                    if (avatarData.data && avatarData.data.length > 0) {
+                        const avatarUrl = avatarData.data[0].imageUrl;
+                        avatarImg.src = avatarUrl;
+                        avatarPreview.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                    }
+                } else {
+                    throw new Error('Invalid username');
+                }
+            } catch (error) {
+                avatarPreview.style.display = 'none';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
